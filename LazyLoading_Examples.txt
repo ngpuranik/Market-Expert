@@ -1,0 +1,24 @@
+Eager Loading
+
+For example
+This can be achieved, using the Include method
+
+We have a student table and a StudentDetails table (related entity to student table),
+Here, we are loading the student with the Id equal to studentId along with the student details. 
+
+
+Student std = dbContext.Student.Include(a => a.StudentDetails).FirstOrDefault(a => a.studentId == studentId);   
+
+
+Lazy Loading
+
+
+For example, when we run the query given below, StudentDetails table will not be loaded along with the Student table. 
+
+student std = dbContext.students.FirstOrDefault(a => a.studentId == studentId);  
+
+
+It will only be loaded when you explicitly call for it
+
+
+studentDeatils sd = std.studentDetails; // studentDetails are loaded here   
